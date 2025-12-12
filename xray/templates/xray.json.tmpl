@@ -202,6 +202,36 @@
       "initial_windows_size": {{.WindowsSize}}
       {{- end }}
     }
+    {{- end }}
+
+    {{- if .HasTCPHTTPSettings }},
+    "tcpSettings": {
+      "header": {
+        "type": "http",
+        "request": {
+          "version": "1.1",
+          "method": "GET",
+          "path": [
+            "{{.Path}}"
+          ],
+          "headers": {
+            "Host": [
+              "{{.Host}}"
+            ],
+            "User-Agent": [
+              "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
+            ],
+            "Accept-Encoding": [
+              "gzip, deflate"
+            ],
+            "Connection": [
+              "keep-alive"
+            ],
+            "Pragma": "no-cache"
+          }
+        }
+      }
+    }
     {{- end }},
     
     "sockopt": {}

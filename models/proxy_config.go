@@ -164,6 +164,10 @@ func (pc *ProxyConfig) HasHTTPUpgradeSettings() bool {
 	return pc.Type == "httpupgrade"
 }
 
+func (pc *ProxyConfig) HasTCPHTTPSettings() bool {
+	return (pc.Type == "tcp" || pc.Type == "") && pc.HeaderType == "http"
+}
+
 func (pc *ProxyConfig) GetServiceName() string {
 	if pc.ServiceName == "" {
 		return "GunService"
